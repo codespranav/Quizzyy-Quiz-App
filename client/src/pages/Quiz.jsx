@@ -37,7 +37,9 @@ const Quiz = () => {
         }
 
         // Cleanup timer when component unmounts or quiz ends
-        return () => clearInterval(timer);
+        return () => {
+            clearInterval(timer);
+            };
     }, [isIntroRead]);
 
     // Format time for display
@@ -79,6 +81,13 @@ const Quiz = () => {
         // Navigate to a results page (optional)
         navigate("/results", { state: { score, total: questions.length } });
     };
+
+    useEffect(()=>{
+        if(timeLeft === 0){
+            console.log(timeLeft);
+            handleSubmitQuiz();
+        }
+    }, [timeLeft])
 
     return (
         isIntroRead ? (
@@ -129,7 +138,13 @@ const Quiz = () => {
                     <div className="buttons flex justify-between mt-5 outline-none">
                         <button
                             className='bg-red-800 text-white p-3 rounded-md'
-                            onClick={() => setIsIntroRead(false)}
+                            onClick={()=>{
+                                let askUserToExit = confirm("Are you sure you want to exit?")
+                                if(askUserToExit){
+                                    setIsIntroRead(false)
+                                }
+
+                            }}
                         >
                             Exit
                         </button>

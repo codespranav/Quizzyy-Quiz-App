@@ -41,10 +41,10 @@ const QuizesList = () => {
         <div className='max-w-7xl mx-auto p-6 '>
             {error ? <p>{error}</p> : null}
             <h1 className='text-xl font-bold border-l-4 border-yellow-300 font-Poppins pl-4'>Featured Quizes</h1>
-            <div className="list bg-white mt-8 flex justify-evenly items-center flex-wrap">
+            <div className="list bg-white mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 m-auto">
                 {quizCat && quizCat.length > 0 ? (
                     quizCat.map((item, index) => (
-                        <div key={index} className="card w-44 md:w-80 m-4 bg-[#f5f5f5] rounded-md p-4 cursor-pointer" title={item.name} onClick={()=>{startQuiz(item.name)}}>
+                        <div key={index} className="card bg-[#f5f5f5] rounded-md p-4 cursor-pointer" title={item.name} onClick={()=>{startQuiz(item.name)}}>
                             <div className="image">
                                 <img src="https://cf.quizizz.com/img/presentation/default-img/presentation_title_img-5_technology.jpg" alt="technology thumbnail" />
                                 <h2 className='text-lg font-bold font-Poppins mt-4 uppercase'>{item.name}</h2>

@@ -9,6 +9,7 @@ import App from './App';
 import UserContext from './contexts/user-context';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
+import ResultPage from './pages/ResultPage';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/start-quiz/:name",
     element: <Quiz/>,
+  },
+  {
+    path: "/results",
+    element: <ResultPage/>,
   },
 ]);
 

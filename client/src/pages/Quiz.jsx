@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
-const API_KEY = "GzCTK7RYUbjcCs2SMSvlZrKaUhFWnqN1FvAw5cJ8";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
-const Quiz = () => {
+const Quiz = () => {``
     let { name } = useParams();
     const navigate = useNavigate();
     const url = `https://quizapi.io/api/v1/questions?apiKey=${API_KEY}&category=${name}&limit=10`; // Fetch 10 questions
@@ -98,7 +98,7 @@ const Quiz = () => {
                         <h1 className="text-2xl font-semibold">Quiz: {name}</h1>
                         <div className="time flex items-center gap-2">
                             <span className="text-lg font-medium">Time Left:</span>
-                            <div className="bg-yellow-400 text-black font-bold px-3 py-1 rounded">
+                            <div className={`${timeLeft < 10 ? 'bg-red-700' : 'bg-yellow-400'} text-black font-bold px-3 py-1 rounded`}>
                                 {formatTime(timeLeft)}
                             </div>
                         </div>
